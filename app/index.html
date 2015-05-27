@@ -9,6 +9,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -22,14 +23,15 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
+      <div class="header" ng-controller="HeaderCtrl">
+        <ul class="nav nav-pills pull-right" id="choices">
+          <li ng-click="update('home')" class="active" id="home"><a ng-href="#">Home</a></li>
+          <li ng-click="update('air')" id="air"><a ng-href="#/air">Air</a></li>
+          <li ng-click="update('light')" id="light"><a ng-href="#/light">Light</a></li>
+          <li ng-click="update('noice')" id="noice"><a ng-href="#/noice">Noice</a></li>
         </ul>
-        <h3 class="text-muted">greenFront</h3>
-      </div>
+        <h3 class="text-muted">Farmanator</h3>
+      </div> 
 
       <div ng-view=""></div>
 
@@ -67,13 +69,18 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/Chart.js/Chart.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/air.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/noice.js"></script>
+        <script src="scripts/controllers/light.js"></script>
         <!-- endbuild -->
 </body>
 </html>
