@@ -9,7 +9,7 @@
  */
 angular.module('greenFrontApp')
   .controller('LightCtrl', function ($scope) {
-    $scope.labels = ["January", "February", "March", "April", "May", "June", "July","January", "February", "March", "April", "May", "June", "July"];
+    $scope.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July','January', 'February', 'March', 'April', 'May', 'June', 'July'];
   $scope.series = ['Series A', 'Series B'];
   $scope.data = [
     [200, 259, 280, 281, 256, 255, 240,200, 259, 280, 281, 256, 255, 240],

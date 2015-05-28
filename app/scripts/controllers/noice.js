@@ -7,7 +7,7 @@ angular.module('greenFrontApp')
     $scope.series = ['Average', 'Peak'];
     $scope.data = [];
 
-    ref.on("value", function(snapshot) {
+    ref.on('value', function(snapshot) {
       createData(snapshot, function(avg, loudest) {
         $scope.data = [];
         $scope.labels = [];
@@ -31,10 +31,10 @@ angular.module('greenFrontApp')
       avg.push(item.val()['average']);
     });
     callback(avg, loudest);
-  };
+  }
 
   function createLabels(count, labels) {
     for (var i=0;i<count;i++) {
       labels.push((i+1).toString());
     }
-  };
+  }
