@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name greenFrontApp
- * @description
- * # greenFrontApp
- *
- * Main module of the application.
- */
 angular
   .module('greenFrontApp', [
     'ngAnimate',
@@ -16,7 +8,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'chart.js'
+    'chart.js',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
