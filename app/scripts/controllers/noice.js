@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('greenFrontApp')
-  .controller('NoiceCtrl', function ($scope, $firebaseArray) {
+  .controller('NoiceCtrl', function ($scope, $firebaseArray, $timeout) {
     var ref = new Firebase('https://radiant-heat-5119.firebaseio.com/voices');
     $scope.labels = [];
     $scope.series = ['Average', 'Peak'];
@@ -11,9 +11,12 @@ angular.module('greenFrontApp')
       createData(snapshot, function(avg, loudest) {
         $scope.data = [];
         $scope.labels = [];
-        $scope.data.push(avg);
-        $scope.data.push(loudest);
-        createLabels(avg.length, $scope.labels);
+        $timeout(function(){
+          $scope.data.push(avg);
+          $scope.data.push(loudest);
+          createLabels(avg.length, $scope.labels);
+          console.log($scope.labels);
+        });
       });
     });
   
@@ -26,7 +29,6 @@ angular.module('greenFrontApp')
     var loudest = [];
     var avg = [];
     voices.forEach(function(item) {
-      console.log(item.val());
       loudest.push(item.val()['loudest']);
       avg.push(item.val()['average']);
     });

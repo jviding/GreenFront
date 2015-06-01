@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('greenFrontApp')
-  .controller('AirCtrl', function ($scope) {
+  .controller('AirCtrl', function ($scope, $timeout) {
     var tempRef = new Firebase('https://radiant-heat-5119.firebaseio.com/temperatures');
     var humidRef = new Firebase('https://radiant-heat-5119.firebaseio.com/humidities');
     
@@ -17,9 +17,11 @@ angular.module('greenFrontApp')
       createTempData(snapshot, function(min, max) {
         $scope.tempdata = [];
         $scope.templabels = [];
-        $scope.tempdata.push(min);
-        $scope.tempdata.push(max);
-        createLabels(min.length, $scope.templabels);
+        $timeout(function(){
+          $scope.tempdata.push(min);
+          $scope.tempdata.push(max);
+          createLabels(min.length, $scope.templabels);
+        });
       });
     });
 
@@ -27,8 +29,10 @@ angular.module('greenFrontApp')
       createHumidData(snapshot, function(humidity) {
         $scope.humiddata = [];
         $scope.humidlabels = [];
-        $scope.humiddata.push(humidity);
-        createLabels(humidity.length, $scope.humidlabels);
+        $timeout(function() {
+          $scope.humiddata.push(humidity);
+          createLabels(humidity.length, $scope.humidlabels);
+        });
       });
     });
   
@@ -41,7 +45,6 @@ angular.module('greenFrontApp')
     var min = [];
     var max = [];
     data.forEach(function(item) {
-      console.log(item.val());
       min.push(item.val()['min']);
       max.push(item.val()['max']);
     });
@@ -51,7 +54,6 @@ angular.module('greenFrontApp')
   function createHumidData(data, callback) {
     var humids = [];
     data.forEach(function(item) {
-      console.log(item.val());
       humids.push(item.val()['humidity']);
     });
     callback(humids);
