@@ -392,7 +392,7 @@ angular.module('greenFrontApp')
       if (max === null || max < parseFloat(item.val()['max'])) {
           max = parseFloat(item.val()['max']);
       }
-      if (min === null || min < parseFloat(item.val()['min'])) {
+      if (min === null || min > parseFloat(item.val()['min'])) {
           min = parseFloat(item.val()['min']);
       }
       count++;
