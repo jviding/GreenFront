@@ -1,23 +1,42 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+  <!-- carousel -->
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel" data-slide-to="1"></li>
+    <li data-target="#carousel" data-slide-to="2"></li>
+    <li data-target="#carousel" data-slide-to="3"></li>
+  </ol>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <div class="jumbotron">
+        <h1>Farmanator</h1>
+        <br>
+        <p>To make your life worth living.</p>
+        <br><br><br>
+      </div>
+    </div>
+    <div class="item">
+      <div class="jumbotron">
+        <h1>Air</h1>
+        <p><br>Temperature: {{airtemp}}℃ <br> Humidity: {{airhumid}}%<br></p>
+        <a ng-href="#/air" type="button" class="btn btn-default">More >></a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="jumbotron">
+        <h1>Light</h1>
+        <p>Infrared: {{lightinfra}} <br> Visible: {{lightvisible}} <br> Lux: {{lightlux}}lx </p>
+        <a ng-href="#/light" type="button" class="btn btn-default">More >></a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="jumbotron">
+        <h1>Noice</h1>
+        <p><br>Noice: {{noice}}<br><br></p>
+        <a ng-href="#/noice" type="button" class="btn btn-default">More >></a>
+      </div>
+    </div>
+  </div>

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('greenFrontApp')
-  .controller('AirCtrl', function ($scope, $timeout) {
+  .controller('AirCtrl', function ($scope, $timeout, HeaderService) {
+    HeaderService.view('air');
     //Firebase
     var tempRef = new Firebase('https://radiant-heat-5119.firebaseio.com/temperatures');
     var tempQuery;
@@ -94,7 +95,7 @@ angular.module('greenFrontApp')
     //Näkymän chartin datan luonti
     function setTempData(time, limit, callback) {
       if (limit !== null) {
-        tempQuery = tempRef.orderByChild('timestamp').startAt(time).limit(limit);
+        tempQuery = tempRef.orderByChild('timestamp').startAt(time).limitToLast(limit);
       }
       else {
         tempQuery = tempRef.orderByChild('timestamp').startAt(time);
@@ -109,7 +110,7 @@ angular.module('greenFrontApp')
 
     function setHumidData(time, limit, callback) {
       if (limit !== null) {
-        humidQuery = humidRef.orderByChild('timestamp').startAt(time).limit(limit);
+        humidQuery = humidRef.orderByChild('timestamp').startAt(time).limitToLast(limit);
       }
       else {
         humidQuery = humidRef.orderByChild('timestamp').startAt(time);
@@ -189,7 +190,7 @@ angular.module('greenFrontApp')
   function createHumidHourData(snapshot) {
     var val = [];
     snapshot.forEach(function(item) {
-      val.push(item.val()['humidity']);
+      val.push(item.val()['average']);
       createHumidMinuteLabels(item);
     });
     updateHumidData(val,null,null);
@@ -200,7 +201,7 @@ angular.module('greenFrontApp')
     var min = [];
     var max = [];
     data.forEach(function(day) {
-      var obj = avgCountMinMaxHumid(day);
+      var obj = avgCountMinMax(day);
       if (obj['count'] > 0) {
         avg.push(obj['average']);
         max.push(obj['max']);
@@ -216,7 +217,7 @@ angular.module('greenFrontApp')
     var min = [];
     var max = [];
     data.forEach(function(hour) {
-      var obj = avgCountMinMaxHumid(hour);
+      var obj = avgCountMinMax(hour);
       if (obj['count'] > 0) {
         avg.push(obj['average']);
         max.push(obj['max']);
@@ -233,7 +234,7 @@ angular.module('greenFrontApp')
     var max = [];
     data.forEach(function(day) {
       day.forEach(function(item) {
-        var obj = avgCountMinMaxHumid(item);
+        var obj = avgCountMinMax(item);
         if (obj['count'] > 0) {
           console.log(obj);
           avg.push(obj['average']);
@@ -393,30 +394,6 @@ angular.module('greenFrontApp')
       }
       if (min === null || min < parseFloat(item.val()['min'])) {
           min = parseFloat(item.val()['min']);
-      }
-      count++;
-    })
-    var obj = {
-      'average': (average/count).toFixed(2),
-      'max': max,
-      'min': min,
-      'count': count
-    }
-    return obj;
-  }
-
-  function avgCountMinMaxHumid(data) {
-    var average = 0;
-    var count = 0;
-    var min = null;
-    var max = null;
-    data.forEach(function(item) {
-      average += parseFloat(item.val()['humidity']);
-      if (max === null || max < parseFloat(item.val()['humidity'])) {
-          max = parseFloat(item.val()['humidity']);
-      }
-      if (min === null || min < parseFloat(item.val()['humidity'])) {
-          min = parseFloat(item.val()['humidity']);
       }
       count++;
     })

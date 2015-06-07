@@ -1,4 +1,85 @@
-<canvas id="line" class="chart chart-line" data="data"
-  labels="labels" legend="true" series="series"
-  click="onClick">
+<h2>Full spectrum light levels</h2>
+
+<div class="dropdown pull-right">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    {{ivview}}
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+  	<li role="presentation" ng-repeat="item in items" ng-click="onIVClick(item)"><a role="menuitem">{{item}}</a></li>
+  </ul>
+</div>
+
+<canvas id="ivline" class="chart chart-line" data="ivdata"
+  labels="ivlabels" legend="true" series="ivseries"
+  click="onIVClick">
 </canvas> 
+
+<p>Infrared and visible light is measured every 0.5 seconds in a 1 second loop. The output of a 1 second loop contains the averages, minimums and maximums of both these two measures taken. Full spectrum light level is the sum of infrared and visible light level at a given moment. Lux level is mathematically calculated using this information.</p>
+
+<p><b>Infrared light</b> {{iviExpl}}</p>
+<p><b>Visible light</b> {{ivvExpl}}</p>
+
+
+<h2>Infrared light levels</h2>
+
+<div class="dropdown pull-right">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
+    {{iview}}
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+  	<li role="presentation" ng-repeat="item in items" ng-click="onIClick(item)"><a role="menuitem">{{item}}</a></li>
+  </ul>
+</div>
+
+<canvas id="iline" class="chart chart-line" data="idata"
+  labels="ilabels" legend="true" series="iseries"
+  click="onIClick">
+</canvas> 
+
+<p><b>Average</b> {{iavgExpl}}</p>
+<p><b>Min</b> {{iminExpl}}</p>
+<p><b>Max</b> {{imaxExpl}}</p>
+
+<h2>Visible light levels</h2>
+
+<div class="dropdown pull-right">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-expanded="true">
+    {{vview}}
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+  	<li role="presentation" ng-repeat="item in items" ng-click="onVClick(item)"><a role="menuitem">{{item}}</a></li>
+  </ul>
+</div>
+
+<canvas id="vline" class="chart chart-line" data="vdata"
+  labels="vlabels" legend="true" series="vseries"
+  click="onVClick">
+</canvas> 
+
+<p><b>Average</b> {{vavgExpl}}</p>
+<p><b>Min</b> {{vminExpl}}</p>
+<p><b>Max</b> {{vmaxExpl}}</p>
+
+<h2>Lux levels</h2>
+
+<div class="dropdown pull-right">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-expanded="true">
+    {{lview}}
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu4">
+  	<li role="presentation" ng-repeat="item in items" ng-click="onLClick(item)"><a role="menuitem">{{item}}</a></li>
+  </ul>
+</div>
+
+<canvas id="lline" class="chart chart-line" data="ldata"
+  labels="llabels" legend="true" series="lseries"
+  click="onLClick">
+</canvas> 
+
+<p><b>Average</b> {{lavgExpl}}</p>
+<p><b>Min</b> {{lminExpl}}</p>
+<p><b>Max</b> {{lmaxExpl}}</p>

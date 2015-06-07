@@ -23,7 +23,7 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header" ng-controller="HeaderCtrl">
+      <div class="header">
         <ul class="nav nav-pills pull-right" id="choices">
           <li ng-click="update('home')" class="active" id="home"><a ng-href="#">Home</a></li>
           <li ng-click="update('air')" id="air"><a ng-href="#/air">Air</a></li>
@@ -80,9 +80,9 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/air.js"></script>
-        <script src="scripts/controllers/header.js"></script>
         <script src="scripts/controllers/noice.js"></script>
         <script src="scripts/controllers/light.js"></script>
+        <script src="scripts/services/header.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('greenFrontApp')
-  .controller('NoiceCtrl', function ($scope, $firebaseArray, $timeout) {
+  .controller('NoiceCtrl', function ($scope, $timeout, HeaderService) {
+    HeaderService.view('noice');
     var ref = new Firebase('https://radiant-heat-5119.firebaseio.com/voices');
     var query;
 
@@ -54,7 +55,7 @@ angular.module('greenFrontApp')
     //Näkymän chartin datan luonti
     function setData(time, limit, callback) {
       if (limit !== null) {
-        query = ref.orderByChild('timestamp').startAt(time).limit(limit);
+        query = ref.orderByChild('timestamp').startAt(time).limitToLast(limit);
       }
       else {
         query = ref.orderByChild('timestamp').startAt(time);
