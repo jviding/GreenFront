@@ -14,7 +14,8 @@ Go to the GreenFront directory. <br>
 Run: $npm install <br>
 Run: $bower install <br>
 Run: $grunt serve <br>
-App should be now running on port 9000
+App should be now running on port 9000 <br>
+You can see it running at localhost:9000/
 
 # Deploying
 Go to the GreenFront directory. <br>
