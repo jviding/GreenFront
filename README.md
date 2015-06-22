@@ -1,6 +1,6 @@
 # GreenFront
-GreenFront is an angular web app and part of a project called Farmanator. <br>
-It's main purpose is to visualise data collected by sensors attached to our Arduino Uno. <br>
+Angular web app for Exactum Greenhouse course. The front end designed to represent the data gathered by Arduino Uno.
+The data is fetched from Firebase and angular charts are being used for the representation. <br>
 <br>
 The app is currently running at http://gentle-shore-2995.herokuapp.com/
 
@@ -10,15 +10,18 @@ The app is currently running at http://gentle-shore-2995.herokuapp.com/
 -grunt <br>
 
 # Usage
-Go to the GreenFront directory. <br>
+Go to the root of GreenFront project. <br>
 Run: $npm install <br>
 Run: $bower install <br>
 Run: $grunt serve <br>
-App should be now running on port 9000 <br>
-You can see it running at localhost:9000/
+Now the project should be running on your localhost. <br>
 
-# Deploying
-Go to the GreenFront directory. <br>
+# Deployment
+Go to the root of GreenFront project. <br>
 Run: $grunt <br>
-(or $grunt --force) <br>
-Now you may deploy the dist folder to Heroku for example.
+($grunt --force might be required) <br>
+Deploy dist folder to your chosen location. Heroku for example. <br>
+
+# How it works
+GreenFront fetches data that we have stored in Firebase and shows it in angular charts. We can view the last 1 hour,
+the current day, last 7 days or last 30 days.
